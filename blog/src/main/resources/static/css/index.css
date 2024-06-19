@@ -1,0 +1,80 @@
+/* 헤더 부분 */
+
+header {
+    display: flex;
+    /*border: 1px solid black;*/
+    background-color: aqua;
+    border-color: aqua;
+    justify-content: space-between;
+    height: 10vh;
+    font-size: large;
+}
+
+.blogName {
+    margin-left: 10px;
+}
+
+.nav {
+    margin-right: 10px;
+}
+
+/* 바디 부분 */
+
+.mainContent {
+    height: 70vh;
+    margin: 0 auto; /* 화면 가운데 정렬을 위해 좌우 마진을 자동으로 설정 */
+    width: 50%;
+    /*max-width: 600px; !* 예시로 너비를 최대 600px로 제한 *!*/
+    padding: 5px; /* 콘텐츠와 테두리 사이의 간격 설정 */
+}
+
+section {
+    display: flex;
+    justify-content: center; /* 내부 요소를 수평으로 가운데 정렬 */
+    align-items: center; /* 내부 요소를 수직으로 가운데 정렬 */
+    height: 100%; /* 부모 요소의 높이를 100%로 설정하여 전체 화면을 채웁니다. */
+}
+
+.subject {
+    height: 10%;
+    background-color: blueviolet;
+    justify-content: center; /* 내부 요소를 수평으로 가운데 정렬 */
+    align-items: center; /* 내부 요소를 수직으로 가운데 정렬 */
+}
+
+
+/* 풋터 영역 */
+
+/*footer {*/
+/*    border : 1px solid black;*/
+/*    display: flex;*/
+/*    margin: 0 auto; !* 이미지를 가운데 정렬할 수 있음 *!*/
+/*}*/
+
+/*footer a img {*/
+/*    object-fit: cover;*/
+/*    max-width: 100%; !* 부모 요소의 너비에 따라 이미지 크기 조정 *!*/
+/*    width: 100px;*/
+/*    height: 100px;*/
+/*    display: block; !* 이미지를 블록 요소로 처리하여 다른 요소와 수직으로 정렬될 수 있도록 함 *!*/
+/*    margin: 0 auto; !* 이미지를 가운데 정렬할 수 있음 *!*/
+/*    padding: 10px 10px 10px 10px;*/
+/*}*/
+
+footer {
+    /*border: 1px solid black;*/
+    display: flex;
+    justify-content: center; /* 내부 요소들을 수평으로 가운데 정렬 */
+    align-items: center; /* 내부 요소들을 수직으로 가운데 정렬 */
+}
+
+footer a {
+    margin: 0 100px; /* 각 링크 사이의 간격 설정 */
+}
+
+footer a img {
+    object-fit: cover;
+    max-width: 100%; /* 이미지 크기 조정 */
+    width: 100px;
+    height: 100px;
+}
