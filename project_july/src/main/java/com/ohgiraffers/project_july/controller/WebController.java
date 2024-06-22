@@ -21,8 +21,9 @@ public class WebController {
                         @RequestParam("password") String password,
                         RedirectAttributes attributes) {
 
-        // 실제 로그인 로직을 구현합니다. 여기서는 임시로 "admin" / "password"로 로그인 성공 처리하는 예시입니다.
-        if ("admin".equals(username) && "password".equals(password)) {
+        // 임시로 아무 값을 입력해도 로그인 성공으로 처리
+        // 실제 개발에서는 이 부분을 데이터베이스 조회 등의 실제 로그인 로직으로 대체해야 합니다.
+        if (username != null && !username.isEmpty() && password != null && !password.isEmpty()) {
             // 로그인 성공 시
             attributes.addFlashAttribute("loginSuccess", true); // 로그인 성공 여부를 Flash 속성으로 전달
             return "redirect:/index.html"; // 정적 리소스인 index.html 페이지로 리다이렉트
