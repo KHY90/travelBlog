@@ -30,6 +30,7 @@ label {
 
 input[type="text"],
 input[type="password"],
+
 button {
     padding: 10px;
     font-size: 16px;

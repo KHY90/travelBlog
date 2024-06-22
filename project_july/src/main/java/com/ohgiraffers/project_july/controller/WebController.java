@@ -12,7 +12,7 @@ public class WebController {
     // 로그인 페이지로 이동
     @GetMapping("/menu-login")
     public String loginPage() {
-        return "menu/menu-login"; // menu-login.html 템플릿을 반환
+        return "menu/menu-login"; // templates/menu/menu-login.html 템플릿을 반환
     }
 
     // 로그인 처리
@@ -35,8 +35,22 @@ public class WebController {
     }
 
     // 회원가입 페이지로 이동
-    @GetMapping("/signup")
+    @GetMapping("/menu-signup")
     public String signupPage() {
-        return "signup"; // templates/signup.html 템플릿을 반환
+        return "menu/menu-signup"; // templates/menu/menu-signup.html 템플릿을 반환
+    }
+
+    // 회원가입 처리
+    @PostMapping("/menu-signup")
+    public String signup(@RequestParam("username") String username,
+                         @RequestParam("password") String password,
+                         RedirectAttributes attributes) {
+
+        // 실제 회원가입 로직을 구현합니다. 여기서는 간단히 성공 메시지를 Flash 속성으로 전달하는 예시입니다.
+        // 여기에 실제 DB 등을 연결하여 회원가입 처리를 구현할 수 있습니다.
+
+        // 가입 성공 시
+        attributes.addFlashAttribute("signupSuccess", true);
+        return "redirect:/menu-login"; // 로그인 페이지로 리다이렉트
     }
 }
