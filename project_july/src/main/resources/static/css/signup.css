@@ -1,4 +1,4 @@
-.login-container {
+.signup-container {
     width: 300px;
     background-color: #fff;
     border-radius: 5px;
@@ -13,7 +13,7 @@ h2 {
     color: #333;
 }
 
-.login-form {
+.signup-form {
     display: flex;
     flex-direction: column;
 }
