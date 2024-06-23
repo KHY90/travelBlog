@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="/css/header.css">
+</head>
+<body>
+
+<header th:fragment="headerFragment" class="header">
+  <div class = "home"><a th:href="@{/index.html}">홈</a></div>
+
+  <div class="menu">
+    <ul>
+      <li><a th:href="@{/invite}">초대</a></li>
+      <li><a th:href="@{/menu-plan}">계획</a></li>
+      <li><a th:href="@{/menu-review}">공유</a></li>
+    </ul>
+  </div>
+  <a th:href="@{/menu-login}" class="login-button">로그인</a>
+</header>
+
+</body>
+</html>
