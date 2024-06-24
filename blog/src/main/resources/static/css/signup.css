@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-/* 로그인 페이지 전용 CSS */
-
-=======
->>>>>>> ba6e39098d27fbb7cf38ef40ffcf775f0785289d
-.login-container {
+.signup-container {
     width: 300px;
     background-color: #fff;
     border-radius: 5px;
@@ -18,7 +13,7 @@ h2 {
     color: #333;
 }
 
-.login-form {
+.signup-form {
     display: flex;
     flex-direction: column;
 }
@@ -33,10 +28,7 @@ label {
 
 input[type="text"],
 input[type="password"],
-<<<<<<< HEAD
-=======
 
->>>>>>> ba6e39098d27fbb7cf38ef40ffcf775f0785289d
 button {
     padding: 10px;
     font-size: 16px;

@@ -8,8 +8,12 @@
 <body>
 
 <header th:fragment="headerFragment" class="header">
+<<<<<<< HEAD
+  <div class = "home"><a th:href="@{/index.html}">홈</a></div>
+=======
 
   <div class="home"><a th:href="@{/index.html}">홈</a></div>
+>>>>>>> ba6e39098d27fbb7cf38ef40ffcf775f0785289d
 
   <div class="menu">
     <ul>
@@ -18,6 +22,9 @@
       <li><a th:href="@{/menu-review}">공유</a></li>
     </ul>
   </div>
+<<<<<<< HEAD
+  <a th:href="@{/menu-login}" class="login-button">로그인</a>
+=======
 
   <!-- 로그인/로그아웃 버튼 -->
   <div th:if="${session.loggedUser == null}">
@@ -30,6 +37,7 @@
   </div>
 
 
+>>>>>>> ba6e39098d27fbb7cf38ef40ffcf775f0785289d
 </header>
 
 </body>

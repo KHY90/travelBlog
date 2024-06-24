@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="share-postFragment">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/share-post.css}">
+    <script src="/js/share-post.js"></script>
+</head>
+<body>
+<!--메인 -->
+<h1>다녀온 여행 자랑하기</h1>
+<div class="content">
+    <div class="header-section">
+        <p>전체 게시물</p>
+        <select class="post-filter">
+            <option value="popular">조회순 ❤</option>
+            <option value="recent">최신순 ❤</option>
+        </select>
+    </div>
+    <div class="search-section">
+        <label for="region-search">지역 검색하기:</label>
+        <input type="text" id="region-search" placeholder="지역 입력">
+        <button id="search-button">검색</button>
+    </div>
+    <div class="post" data-region="서울">
+        <div class="thumbnail">
+            <img src="https://search.pstatic.net/sunny/?src=http%3A%2F%2Ffile3.instiz.net%2Fdata%2Ffile3%2F2018%2F09%2F20%2F1%2F2%2F7%2F127ea8c59a5b332ceafcccdfcf7415b6.jpg&type=a340" alt="썸네일">
+        </div>
+        <div class="post-content">
+            <h3>김 화연</h3>
+            <p>두 번째 게시물의 세 줄 미리보기입니다. 여기에는 더 많은 내용이 있을 수 있습니다.</p>
+            <a href="#" class="read-more">더 보기</a>
+        </div>
+    </div>
+    <div class="post" data-region="부산">
+        <div class="thumbnail">
+            <img src="https://search.pstatic.net/sunny/?src=http%3A%2F%2Ffile3.instiz.net%2Fdata%2Ffile3%2F2018%2F09%2F20%2F1%2F2%2F7%2F127ea8c59a5b332ceafcccdfcf7415b6.jpg&type=a340" alt="썸네일">
+        </div>
+        <div class="post-content">
+            <h3>홍 서우</h3>
+            <p>두 번째 게시물의 세 줄 미리보기입니다. 여기에는 더 많은 내용이 있을 수 있습니다.</p>
+            <a href="#" class="read-more">더 보기</a>
+        </div>
+    </div>
+    <div class="post" data-region="제주">
+        <div class="thumbnail">
+            <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDAyMjlfMTAg%2FMDAxNzA5MTM2MTg4MjQw.SBtA5l_R42W5T1djRSpvP_9JoYj-1XwJnXttLKFtbgkg.SrvdH3hAKAt4Z2HiBelfpHb56onHhLEwYan8XVbrEQ0g.JPEG%2FOIG2.jpg&type=a340" alt="썸네일">
+        </div>
+        <div class="post-content">
+            <h3>목 진희</h3>
+            <p>두 번째 게시물의 세 줄 미리보기입니다. 여기에는 더 많은 내용이 있을 수 있습니다.</p>
+            <a href="#" class="read-more">더 보기</a>
+        </div>
+    </div>
+    <div class="post" data-region="서울">
+        <div class="thumbnail">
+            <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzExMDJfMTQx%2FMDAxNjk4ODk4MzA5Nzk2.jt9NtraCCMy8TJYms5mnnbHkzfiZOt2qLQR4izb_30wg.PtFBvdPzbbxw6PR5rtALLcjAx3aulgA3vAEiaYGOsFIg.JPEG.gnfnffkffk%2FPokemonAG039%25A3%25DF%25A3%25AD%25A3%25DF%253F%2595%254C%253F%253F%253F%25A3%25DF%253F%253F%253F%253F%253F%25A3%25DF%253F%253F%253F%253F%253F%253F.avi%25A3%25DF000501866.jpg&type=sc960_832" alt="썸네일">
+        </div>
+        <div class="post-content">
+            <h3>김 효연</h3>
+            <p>두 번째 게시물의 세 줄 미리보기입니다. 여기에는 더 많은 내용이 있을 수 있습니다.</p>
+            <a href="#" class="read-more">더 보기</a>
+        </div>
+    </div>
+    <div class="post" data-region="제주">
+        <div class="thumbnail">
+            <img src="https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi.pinimg.com%2Foriginals%2Fa0%2F11%2F88%2Fa01188c17c5c11b1e7e5208df5f79819.png&type=sc960_832" alt="썸네일">
+        </div>
+        <div class="post-content">
+            <h3>신 주연</h3>
+            <p>두 번째 게시물의 세 줄 미리보기입니다. 여기에는 더 많은 내용이 있을 수 있습니다.</p>
+            <a href="#" class="read-more">더 보기</a>
+        </div>
+    </div>
+    <div class="post" data-region="울산">
+        <div class="thumbnail">
+            <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzAxMTRfMTMx%2FMDAxNjczNjcyOTM4NjMx.2YgQWgIvQ_xBydJtNPeSzdNALzY0rI4uLdGrWiEoWtIg.NdQ56H5KHvlgh1WghyPU2zOpQglbvnMCLgcZUlJ-F5Eg.PNG.jaeoh413%2Fimage.png&type=sc960_832" alt="썸네일">
+        </div>
+        <div class="post-content">
+            <h3>김 재석</h3>
+            <p>두 번째 게시물의 세 줄 미리보기입니다. 여기에는 더 많은 내용이 있을 수 있습니다.</p>
+            <a href="#" class="read-more">더 보기</a>
+        </div>
+    </div>
+    <div class="post" data-region="인천">
+        <div class="thumbnail">
+            <img src="data:image/jpeg;base64,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" alt="썸네일">
+        </div>
+        <div class="post-content">
+            <h3>김 준성</h3>
+            <p>두 번째 게시물의 세 줄 미리보기입니다. 여기에는 더 많은 내용이 있을 수 있습니다.</p>
+            <a th:href="@{/jun}" class="read-more">더 보기</a>
+        </div>
+    </div>
+    <div class="post" data-region="인천">
+        <div class="thumbnail">
+            <img src="https://photo.coolenjoy.co.kr/data/editor/2208/thumb-f83b1f4f93227114b021b4fe1cef9aa10636e128.jpg" alt="썸네일">
+        </div>
+        <div class="post-content">
+            <h3>한 소희</h3>
+            <p>두 번째 게시물의 세 줄 미리보기입니다. 여기에는 더 많은 내용이 있을 수 있습니다.</p>
+            <a href="#" class="read-more">더 보기</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
