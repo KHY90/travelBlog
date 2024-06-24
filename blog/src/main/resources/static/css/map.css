@@ -1,0 +1,130 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+.map-container {
+    display: flex;
+}
+.left-panel {
+    width: 300px;
+    padding: 10px;
+}
+.left-panel1 {
+    text-align: center;
+    margin-top: 100px; /* left-panel과의 간격을 설정 */
+}
+.right-panel {
+    flex: 1;
+    position: relative;
+}
+.right-panel #map {
+    width: 100%;
+    height: 600px;
+}
+.search-container {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 2;
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+.calendar-container {
+    display: none;
+    position: absolute;
+    top: calc(100% + 10px); /* 여행 기간 링크 아래에 위치 */
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* 여행 기간 링크에 마우스를 올렸을 때 */
+nav#nav2 ul li:nth-child(2) a:hover + .calendar-container {
+    display: block;
+    padding: 0;
+    margin: 0;
+}
+
+.calendar-container.visible {
+    display: block; /* 클릭 시 보이기 */
+}
+.calendar {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.calendar li {
+    cursor: pointer;
+    margin: 5px 0;
+}
+
+.calendar li:hover {
+    text-decoration: underline;
+}
+
+.place-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.place-list li {
+    margin: 5px 0;
+}
+
+/* 박스 형태로 스타일링 */
+nav#nav2 ul li {
+    margin-bottom: 10px;
+}
+
+nav#nav2 ul li a {
+    display: block;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    text-decoration: none;
+    color: #333;
+}
+
+nav#nav2 ul li a:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* 날짜 선택 시 호버 효과 */
+.calendar li:hover {
+    background-color: #f0f0f0;
+}
+
+button.button_1 {
+
+    display: block;
+    width: 100%; /* 링크 요소와 넓이 동일하게 설정 */
+    padding: 10px;
+    background-color: #ccd6d8;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    text-decoration: none;
+    color: #333;
+    cursor: pointer; /* 버튼 커서 설정 */
+}
+button.button_1:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* 더 큰 그림자 설정 */
+    transform: translateY(-2px); /* 약간의 위로 이동 효과 */
+}
+
+nav#nav2 ul li {
+    margin-top:13px;
+}

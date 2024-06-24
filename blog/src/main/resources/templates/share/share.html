@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<header>
+    <div th:insert="~{fragments/header :: headerFragment}"></div>
+</header>
+
+<section>
+<div th:insert="share/fragments/share-post :: share-postFragment"></div>
+</section>
+
+<footer>
+    <div th:insert="/fragments/footer :: footerFragment"></div>
+</footer>
+</body>
+</html>
