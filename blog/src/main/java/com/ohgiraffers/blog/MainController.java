@@ -24,7 +24,7 @@ public class MainController {
 
     @GetMapping("/map")
     public String map() {
-        return "plan/plan/map";
+        return "plan/map";
     }
 
 }

@@ -128,3 +128,12 @@ button.button_1:hover {
 nav#nav2 ul li {
     margin-top:13px;
 }
+
+.title-logo {
+    display: flex;
+    justify-content: space-between; /* 좌우 분산 정렬 */
+}
+
+.title-logo a {
+    margin: 0 5px 0 5px;
+}
