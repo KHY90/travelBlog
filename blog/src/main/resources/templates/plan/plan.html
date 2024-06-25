@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" th:href="@{/css/reset.css}">
-    <link rel="stylesheet" th:href="@{/css/main.css}">
-    <link rel="stylesheet" th:href="@{/css/plan-main.css}">
+
 </head>
+
 <body>
 <!-- 헤더 시작 -->
 <header>
@@ -15,7 +14,7 @@
 <!-- 헤더 끝 -->
 
 <!-- 바디 시작 -->
-<section class="main">
+<section class="calendar-container">
     <div class="top-container">
         <div th:insert="/plan/fragments/calender :: calenderFragment"></div>
     </div>

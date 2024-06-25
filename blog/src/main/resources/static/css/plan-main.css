@@ -1,0 +1,17 @@
+/* 기본 스타일 초기화 */
+body, h1, h2, h3, p, div, header, section {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 전체 레이아웃 */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+/* 메인 이미지 스타일 */
+
+
+
