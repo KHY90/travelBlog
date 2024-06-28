@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="memoFragment">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/plan-memo.css}">
+</head>
+<body>
+<div class="memo-main">
+    <div class="memo">
+        <input placeholder="일정을 입력하세요">
+    </div>
+    <div class="memo-button">
+        <button>+할일추가</button>
+        <a th:href="@{/map}" style="text-decoration: none;">
+            <button>+지도추가</button>
+        </a>
+        <button>수정</button>
+    </div>
+</div>
+</body>
+</html>

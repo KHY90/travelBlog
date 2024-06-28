@@ -1,4 +1,8 @@
+<<<<<<< HEAD
     /* 전체 페이지 스타일링 */
+=======
+/* 전체 페이지 스타일링 */
+>>>>>>> ba6e39098d27fbb7cf38ef40ffcf775f0785289d
 body {
     font-family: Arial, sans-serif; /* 기본 글꼴 설정 */
     margin: 0; /* 페이지 여백 제거 */
@@ -17,6 +21,25 @@ header {
     height: 80px; /* 헤더의 높이 설정 */
 }
 
+<<<<<<< HEAD
+=======
+/* 홈 스타일링 */
+.home a {
+    display: flex; /* 가로로 나열 */
+    align-items: center; /* 세로 가운데 정렬 */
+    margin-left: 20px; /* 왼쪽 여백 */
+    text-decoration: none; /* 링크 밑줄 제거 */
+    color: #fff; /* 링크 색상 */
+    padding: 10px; /* 링크 안 여백 */
+    border-radius: 5px; /* 링크 버튼 둥글게 */
+    transition: background-color 0.3s ease; /* 배경색 변화 애니메이션 */
+}
+
+.home a :hover {
+    background-color: #555; /* 호버시 배경색 변화 */
+}
+
+>>>>>>> ba6e39098d27fbb7cf38ef40ffcf775f0785289d
 /* 메뉴 스타일링 */
 .home {
         display: flex; /* 가로로 나열 */
@@ -67,7 +90,11 @@ header {
     cursor: pointer; /* 마우스 오버 시 커서 모양 */
     border-radius: 5px; /* 버튼 둥글게 */
     transition: background-color 0.3s ease; /* 배경색 변화 애니메이션 */
+<<<<<<< HEAD
     margin-right: 20px
+=======
+    margin-right: 20px;
+>>>>>>> ba6e39098d27fbb7cf38ef40ffcf775f0785289d
 }
 
 .login-button:hover {

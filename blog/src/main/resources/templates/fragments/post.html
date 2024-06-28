@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="postFragment">
+<head>
+    <meta charset="UTF-8">
+    <title>Post Fragment</title>
+    <link rel="stylesheet" th:href="@{/css/post.css}">
+</head>
+<body>
+<div class="main-select">
+    <div class="image-container">
+        <a th:href="@{/share}">
+            <img th:src="@{/img/share.png}" alt="공유 이미지">
+            <div class="overlay">공유</div>
+        </a>
+    </div>
+    <div class="image-container">
+        <a th:href="@{/plan}">
+            <img th:src="@{/img/plan.png}" alt="계획 이미지">
+            <div class="overlay">계획</div>
+        </a>
+    </div>
+</div>
+</body>
+</html>

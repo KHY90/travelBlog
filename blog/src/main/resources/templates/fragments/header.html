@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="headerFragment">
+<head>
+    <title>Title</title>
+<!--    <link rel="stylesheet" th:href="@{/css/reset.css}">-->
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+</head>
+<body>
+
+<!-- 헤더 시작 -->
+<header>
+    <div class="top">
+        <div> 여행 블로그 </div>
+        <div class="top-nav">
+            <div><a th:href="@{/}">홈</a></div>
+            <div><a th:href="@{/share}">공유</a></div>
+            <div><a th:href="@{/plan}">계획</a></div>
+            <div><a th:href="@{/menu-login}"><button>로그인</button></a></div>
+        </div>
+    </div>
+</header>
+<!-- 헤더 종료 -->
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+.memo-main {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border: 1px solid black;
+}
+
+.memo {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.memo input {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.memo-button {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.memo-button button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+.memo-button button:hover {
+    background-color: #45a049;
+}

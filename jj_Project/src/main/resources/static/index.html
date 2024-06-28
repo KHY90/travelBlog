@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="./css/calendar.js"></script>
+
+</head>
+<body>
+
+<nav id="nav">
+    <ul>
+        <li class="left"><a href="#">여행 블로그</a></li>
+        <li class="right"><a href="#">로그인</a></li>
+        <li class="right"><a href="#">공유</a></li>
+        <li class="right"><a href="#">계획</a></li>
+        <li class="right"><a href="#">초대</a></li>
+    </ul>
+</nav>
+
+<div class = "main">
+<h1>여행 플래너</h1>
+
+</div>
+
+<div class="calendar-container">
+    <div class="calendar-header">
+        <button id="prevBtn">이전</button>
+        <h2 id="currentMonth"></h2>
+        <button id="nextBtn">다음</button>
+    </div>
+    <div class="calendar-days">
+        <div class="day">일</div>
+        <div class="day">월</div>
+        <div class="day">화</div>
+        <div class="day">수</div>
+        <div class="day">목</div>
+        <div class="day">금</div>
+        <div class="day">토</div>
+    </div>
+    <div class="calendar-dates" id="calendarDates"></div>
+</div>
+
+<div class="input-container">
+    <!-- 첫 번째 입력 칸 -->
+    <div class="input-box">
+        <label for="input1" class="input-label"></label>
+        <input type="text" id="input1" class="input-field">
+    </div>
+
+    <!-- 두 번째 입력 칸 -->
+    <div class="input-box">
+        <label for="input2" class="input-label"></label>
+        <input type="text" id="input2" class="input-field">
+    </div>
+
+    <!-- 세 번째 입력 칸 -->
+    <div class="input-box">
+        <label for="input3" class="input-label"></label>
+        <input type="text" id="input3" class="input-field">
+    </div>
+</div>
+
+<footer>
+    <button id="footerButton">할일 추가</button>
+    <button id="footerButton1">지도 추가</button>
+    <button id="footerButton2">수정</button>
+</footer>
+
+
+
+<script>
+
+    const calendarDates = document.getElementById("calendarDates");
+    const currentMonthElement = document.getElementById("currentMonth");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+
+    let today = new Date(); // 현재 날짜를 나타내는 Date 객체를 저장한다.
+    let currentMonth = today.getMonth(); // 현재 월을 나타내는 값을 저장한다.
+    let currentYear = today.getFullYear(); // 변수에 현재 연도를 나타내는 값을 저장한다.
+
+    function renderCalendar() {
+        const firstDayOfMonth = new Date(currentYear, currentMonth, 1);
+        const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+        const startDayOfWeek = firstDayOfMonth.getDay();
+
+        currentMonthElement.textContent = `${currentYear}년 ${currentMonth + 1}월`;
+
+        calendarDates.innerHTML = "";
+
+        for (let i = 0; i < startDayOfWeek; i++) {
+            const emptyDate = document.createElement("div");
+            emptyDate.classList.add("date", "empty");
+            calendarDates.appendChild(emptyDate);
+        }
+
+        for (let i = 1; i <= daysInMonth; i++) {
+            const dateElement = document.createElement("div");
+            dateElement.classList.add("date");
+            dateElement.textContent = i;
+            calendarDates.appendChild(dateElement);
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        renderCalendar();
+
+        prevBtn.addEventListener("click", () => {
+            currentMonth--;
+            if (currentMonth < 0) {
+                currentMonth = 11;
+                currentYear--;
+            }
+            renderCalendar();
+        });
+
+        nextBtn.addEventListener("click", () => {
+            currentMonth++;
+            if (currentMonth > 11) {
+                currentMonth = 0;
+                currentYear++;
+            }
+            renderCalendar();
+        });
+    });
+
+</script>
+
+
+
+
+
+</body>
+</html>

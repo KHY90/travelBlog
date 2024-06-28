@@ -9,8 +9,7 @@
 
 <header th:fragment="headerFragment" class="header">
 
-  <div class="home"> <a href="/index.html"> 홈 </a> </div>
-
+  <div class="home"><a th:href="@{/index.html}">홈</a></div>
   <div class="menu">
     <ul>
       <li><a th:href="@{/invite}">초대</a></li>
@@ -18,7 +17,19 @@
       <li><a th:href="@{/menu-review}">공유</a></li>
     </ul>
   </div>
-  <a th:href="@{/login}" class="login-button">로그인</a>
+
+  <a th:href="@{/menu-login}" class="login-button">로그인</a>
+
+  <!-- 로그인/로그아웃 버튼 -->
+  <div th:if="${session.loggedUser == null}">
+    <a th:href="@{/menu-login}" class="login-button">로그인</a>
+  </div>
+  <div th:if="${session.loggedUser != null}">
+    <form th:action="@{/logout}" method="post">
+      <button type="submit" class="login-button">로그아웃</button>
+    </form>
+  </div>
+
 </header>
 
 </body>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>여행 블로그</title>
+</head>
+<body>
+<!-- 헤더 시작 -->
+<header>
+    <div th:insert="fragments/header :: headerFragment"></div>
+</header>
+<!-- 헤더 시작 -->
+
+<!-- 바디 시작 -->
+<section class="main">
+    <div class="top-container">
+        <div th:insert="fragments/main :: mainFragment"></div>
+    </div>
+</section>
+
+<section>
+    <div class="inner">
+        <h2> 메인 메뉴 </h2>
+    </div>
+    <div class="posts">
+        <div th:insert="fragments/post :: postFragment"></div>
+    </div>
+</section>
+<!-- 바디 끝 -->
+
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/plan-main.css}">
+</head>
+
+<body>
+<!-- 헤더 시작 -->
+<header>
+    <div th:insert="fragments/header :: headerFragment"></div>
+</header>
+<!-- 헤더 끝 -->
+
+<!-- 바디 시작 -->
+<section class="main-container">
+    <div class="calendar-wrapper">
+        <div class="calendar-container">
+            <div th:insert="/plan/fragments/calender :: calenderFragment"></div>
+        </div>
+    </div>
+    <div class="posts">
+        <div th:insert="/plan/fragments/memo :: memoFragment"></div>
+    </div>
+</section>
+<!-- 바디 끝 -->\\
+
+<!-- 풋터 시작 -->
+<footer>
+    <div th:insert="/fragments/footer :: footerFragment"></div>
+</footer>
+<!-- 풋터 종료 -->
+
+</body>
+</html>

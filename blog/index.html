@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON 게시판</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .post {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .edit-form {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<h1>JSON 게시판</h1>
+<div>
+    <input type="text" id="author" placeholder="작성자 이름을 입력하세요"><br>
+    <input type="text" id="title" placeholder="제목을 입력하세요"><br>
+    <textarea id="content" rows="4" cols="50" placeholder="내용을 입력하세요"></textarea><br>
+    <button onclick="addPost()">게시글 추가</button>
+</div>
+<hr>
+<div id="posts"></div>
+
+<script src="app.js"></script>
+</body>
+</html>

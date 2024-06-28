@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+<<<<<<< HEAD
+    <title>Login</title>
+=======
+    <title>로그인</title>
+>>>>>>> ba6e39098d27fbb7cf38ef40ffcf775f0785289d
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+
+<div th:replace="fragments/header :: headerFragment"></div>
+
+<main>
+    <div class="login-container">
+        <h2>로그인</h2>
+        <form th:action="@{/menu-login}" method="post" class="login-form">
+            <div class="form-group">
+                <label for="username">사용자명:</label>
+<<<<<<< HEAD
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">비밀번호:</label>
+                <input type="password" id="password" name="password" required>
+=======
+                <input type="text" id="username" name="username" th:name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">비밀번호:</label>
+                <input type="password" id="password" name="password" th:name="password" required>
+>>>>>>> ba6e39098d27fbb7cf38ef40ffcf775f0785289d
+            </div>
+            <button type="submit">로그인</button>
+        </form>
+        <div class="signup-link">
+<<<<<<< HEAD
+            아직 계정이 없으신가요? <a href="/signup">회원가입</a>
+=======
+            아직 계정이 없으신가요? <a href="/menu-signup">회원가입</a>
+>>>>>>> ba6e39098d27fbb7cf38ef40ffcf775f0785289d
+        </div>
+    </div>
+</main>
+
+</body>
+</html>

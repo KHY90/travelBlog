@@ -1,0 +1,59 @@
+/* 기본 스타일 초기화 */
+body, h1, h2, h3, p, div, header, section {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 전체 레이아웃 */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+/* 메인 이미지 스타일 */
+.main-img {
+    text-align: center;
+    margin: 20px 0;
+    position: relative; /* 이미지 컨테이너를 relative로 설정하여 내부 요소들을 상대적으로 배치 */
+    width: 100%;
+}
+
+.img-container {
+    position: relative;
+}
+
+.img-container img {
+    width: 100%;
+    height: 50vh;
+}
+
+.centered-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* 중앙 정렬 */
+    font-size: 50px; /* 원하는 폰트 크기 설정 */
+    color: white; /* 텍스트 색상 설정 */
+    background-color: rgba(0, 0, 0, 0.5); /* 텍스트 배경색 설정 */
+    padding: 10px; /* 텍스트 주위의 여백 설정 */
+    border-radius: 5px; /* 모서리 둥글게 설정 */
+    text-align: center; /* 텍스트 중앙 정렬 */
+}
+
+/* 섹션 스타일 */
+section {
+    padding: 20px;
+    background-color: white;
+    margin: 20px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.inner h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-align: center;
+}
+
+
+
