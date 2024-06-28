@@ -1,17 +1,36 @@
-/* 기본 스타일 초기화 */
-body, h1, h2, h3, p, div, header, section {
+/* 기본 스타일 설정 */
+body, html {
     margin: 0;
     padding: 0;
+    font-family: 'Open Sans', sans-serif;
     box-sizing: border-box;
 }
 
-/* 전체 레이아웃 */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+/* 전체 레이아웃 설정 */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
 }
 
-/* 메인 이미지 스타일 */
+/* 캘린더 컨테이너 설정 */
+.calendar-container {
+    width: 100%;
+    max-width: 600px; /* 적절한 최대 너비 설정 */
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
 
-
-
+/* 포스트 컨테이너 설정 */
+.posts {
+    width: 100%;
+    max-width: 600px; /* 적절한 최대 너비 설정 */
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}

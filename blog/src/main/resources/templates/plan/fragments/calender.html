@@ -1,103 +1,38 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" th:fragment="calenderFragment">
 <head>
-    <meta charset="UTF-8">
-    <title>calender</title>
-    <link rel="stylesheet" th:href="@{/css/calender.css}">
-    <script src="/js/calender.js"></script>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Jinny's Blog</title>
+    <link rel="stylesheet" th:href="@{/css/calender.css}"/>
+    <link rel="stylesheet" th:href="@{/css/reset.css}"/>
 </head>
 <body>
-
-<div class="main">
-    <h1>여행 플래너</h1>
+<!--==========달력==========-->
+<div class="total2">
+    <div class="calendar-container">
+        <div class="calendar">
+            <div class="header_calender">
+                <button class="nav-btn go-prev" onclick="prevMonth()">&lt;</button>
+                <button class="year-month" onclick="goToday()"></button>
+                <button class="nav-btn go-next" onclick="nextMonth()">&gt;</button>
+            </div>
+            <div class="main">
+                <div class="days">
+                    <div class="day">Sun</div>
+                    <div class="day">Mon</div>
+                    <div class="day">Tue</div>
+                    <div class="day">Wed</div>
+                    <div class="day">Thu</div>
+                    <div class="day">Fri</div>
+                    <div class="day">Sat</div>
+                </div>
+                <div class="dates"></div>
+            </div>
+        </div>
+    </div>
 </div>
 
-<section class="section-calendar">
-<div class="calendar-container">
-    <div class="calendar-header">
-        <button id="prevBtn">이전</button>
-        <h2 id="currentMonth"></h2>
-        <button id="nextBtn">다음</button>
-    </div>
-    <div class="calendar-days">
-        <div class="day">일</div>
-        <div class="day">월</div>
-        <div class="day">화</div>
-        <div class="day">수</div>
-        <div class="day">목</div>
-        <div class="day">금</div>
-        <div class="day">토</div>
-    </div>
-    <div class="calendar-dates" id="calendarDates"></div>
-</div>
-</section>
-
-<script>
-    const calendarDates = document.getElementById("calendarDates");
-    const currentMonthElement = document.getElementById("currentMonth");
-    const prevBtn = document.getElementById("prevBtn");
-    const nextBtn = document.getElementById("nextBtn");
-
-    let today = new Date();
-    let currentMonth = today.getMonth();
-    let currentYear = today.getFullYear();
-
-    function renderCalendar() {
-        const firstDayOfMonth = new Date(currentYear, currentMonth, 1);
-        const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-        const startDayOfWeek = firstDayOfMonth.getDay();
-
-        currentMonthElement.textContent = `${currentYear}년 ${currentMonth + 1}월`;
-
-        calendarDates.innerHTML = "";
-
-        for (let i = 0; i < startDayOfWeek; i++) {
-            const emptyDate = document.createElement("div");
-            emptyDate.classList.add("date", "empty");
-            calendarDates.appendChild(emptyDate);
-        }
-
-        for (let i = 1; i <= daysInMonth; i++) {
-            const dateElement = document.createElement("div");
-            dateElement.classList.add("date");
-            dateElement.textContent = i;
-            dateElement.addEventListener("click", function() {
-                const selectedDate = `${currentYear}-${currentMonth + 1}-${i}`;
-                const urlParams = new URLSearchParams(window.location.search);
-                let dates = urlParams.get('dates');
-                if (!dates) {
-                    dates = selectedDate;
-                } else {
-                    dates += ',' + selectedDate;
-                }
-                window.location.href = `map.html?dates=${dates}`;
-            });
-            calendarDates.appendChild(dateElement);
-        }
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-        renderCalendar();
-
-        prevBtn.addEventListener("click", () => {
-            currentMonth--;
-            if (currentMonth < 0) {
-                currentMonth = 11;
-                currentYear--;
-            }
-            renderCalendar();
-        });
-
-        nextBtn.addEventListener("click", () => {
-            currentMonth++;
-            if (currentMonth > 11) {
-                currentMonth = 0;
-                currentYear++;
-            }
-            renderCalendar();
-        });
-    });
-</script>
-
+<script th:src="@{/js/calender.js}"></script>
 </body>
 </html>
