@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Map</title>
+
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7ffec375608d0e602d0d5c7e591d3aea&libraries=services"></script> <script th:src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7ffec375608d0e602d0d5c7e591d3aea&amp;libraries=services"></script>
+</head>
+<body>
+
+<div class="map-container">
+    <div class="left-panel">
+        <div class="title-logo">
+            Travel Blog
+        </div>
+        <div class="title">
+        <h3>여행 일정</h3>
+        </div>
+        <nav id="nav2">
+
+            <ul>
+<!--                <li><a href="#">여행 일정</a></li>-->
+                <li>
+                    <a href="#">여행 기간</a>
+                    <div id="calendar-container">
+                        <input type="date" />
+                        <input type="date" />
+                    </div>
+                </li>
+                <div>
+                    <label>1일차</label>
+                    <div class="input-box">
+                        <label for="input1" class="input-label"></label>
+                        <input type="text" id="input1" class="input-field">
+                    </div>
+
+                    <span></span>
+                </div>
+
+                    <button class="button_1" onclick="addCustomPlace()">새 항목 추가</button>
+                    <p id="clicked-place"></p>
+
+                    <button class="button_1" onclick="addRecommendedPlace()">일정 저장</button>
+                    <ul class="place-list" id="recommended-places">
+
+                    </ul>
+
+                </li>
+
+            </ul>
+        </nav>
+
+        <div class="left-panel1">
+            <ul class="place-list" id="places-container">
+                <!-- 동적으로 추가될 장소들을 위한 자리 -->
+            </ul>
+
+
+        </div>
+
+    </div>
+    <div class="right-panel">
+        <div class="search-container">
+            <input type="text" id="search-box" placeholder="위치 검색" />
+            <button onclick="searchLocation()">위치검색</button>
+        </div>
+        <div id="map"></div>
+
+    </div>
+</div>
+
+<script>
+    // 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
+    var infowindow = new kakao.maps.InfoWindow({zIndex:1});
+
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+        mapOption = {
+            center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
+            level: 3 // 지도의 확대 레벨
+        };
+
+    // 지도를 생성합니다
+    var map = new kakao.maps.Map(mapContainer, mapOption);
+
+
+
+
+    var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png', // 마커이미지의 주소입니다
+        imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
+        imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+
+    // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
+        markerPosition = new kakao.maps.LatLng(37.54699, 127.09598); // 마커가 표시될 위치입니다
+
+    // 마커를 생성합니다
+    var marker = new kakao.maps.Marker({
+        position: markerPosition,
+        image: markerImage // 마커이미지 설정
+    });
+
+    // 마커가 지도 위에 표시되도록 설정합니다
+    marker.setMap(map);
+
+    // 커스텀 오버레이에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+    var content = '<div class="customoverlay">' +
+        '  <a href="https://map.kakao.com/link/map/11394059" target="_blank">' +
+        '    <span class="title">구의야구공원</span>' +
+        '  </a>' +
+        '</div>';
+
+    // 커스텀 오버레이가 표시될 위치입니다
+    var position = new kakao.maps.LatLng(37.54699, 127.09598);
+
+    // 커스텀 오버레이를 생성합니다
+    var customOverlay = new kakao.maps.CustomOverlay({
+        map: map,
+        position: position,
+        content: content,
+        yAnchor: 1
+    });
+
+
+
+
+    // 장소 검색 객체를 생성합니다
+    var ps = new kakao.maps.services.Places(map);
+
+    // 카테고리로 은행을 검색합니다
+    ps.categorySearch('BK9', placesSearchCB, {useMapBounds:true});
+
+    // 키워드 검색 완료 시 호출되는 콜백함수 입니다
+    function placesSearchCB (data, status, pagination) {
+        if (status === kakao.maps.services.Status.OK) {
+            for (var i=0; i<data.length; i++) {
+                displayMarker(data[i]);
+            }
+        }
+    }
+
+    // 지도에 마커를 표시하는 함수입니다
+    function displayMarker(place) {
+        // 마커를 생성하고 지도에 표시합니다
+        var marker = new kakao.maps.Marker({
+            map: map,
+            position: new kakao.maps.LatLng(place.y, place.x)
+        });
+
+        // 마커에 클릭이벤트를 등록합니다
+        kakao.maps.event.addListener(marker, 'click', function() {
+            // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
+            infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
+            infowindow.open(map, marker);
+        });
+    }
+
+    // 위치 검색 함수 정의
+    function searchLocation() {
+        var keyword = document.getElementById('search-box').value;
+
+        // 장소 검색 객체 생성
+        var ps = new kakao.maps.services.Places(map);
+
+        // 키워드로 장소 검색
+        ps.keywordSearch(keyword, placesSearchCB);
+    }
+    // 키워드 검색 함수 정의
+    function searchLocation() {
+        var keyword = document.getElementById('search-box').value;
+        ps.keywordSearch(keyword, placesSearchCB);
+    }
+
+    // 추천 장소에 추가하는 함수
+    function addRecommendedPlace() {
+        var clickedPlace = document.getElementById('clicked-place').textContent;
+        if (clickedPlace) {
+            var li = document.createElement('li');
+            li.textContent = clickedPlace;
+            document.getElementById('places-container').appendChild(li);
+        } else {
+            alert('추가할 장소를 먼저 클릭하세요.');
+        }
+    }
+
+    // 장소 검색 완료 후 호출되는 콜백 함수
+    function placesSearchCB(data, status, pagination) {
+        if (status === kakao.maps.services.Status.OK) {
+            // 검색된 장소가 있으면 첫 번째 장소로 이동
+            var bounds = new kakao.maps.LatLngBounds();
+            bounds.extend(new kakao.maps.LatLng(data[0].y, data[0].x)); // 첫 번째 장소의 좌표를 기준으로 지도 확대
+
+            // 검색된 장소들을 마커로 표시
+            for (var i = 0; i < data.length; i++) {
+                displayMarker(data[i]);
+                bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x)); // 모든 장소의 좌표를 bounds에 추가
+            }
+
+            // 검색된 장소들이 모두 표시되도록 지도의 확대/축소 레벨 설정
+            map.setBounds(bounds);
+        // } else {
+        //     alert('검색 결과가 없거나 검색에 실패했습니다.');
+        }
+    }
+
+
+    // left-panel1에 위치 정보 표시하는 함수
+    function showPlaceInfo(place) {
+        var placeInfo = document.getElementById('place-info');
+        placeInfo.innerHTML = `
+            <div class="place-box">
+                <div class="place-name">${place.place_name}</div>
+                <div>${place.address_name}</div>
+            </div>
+        `;
+    }
+
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // URL에서 날짜 정보 파라미터 가져오기
+        const urlParams = new URLSearchParams(window.location.search);
+        const selectedDates = urlParams.get('dates');
+        if (selectedDates) {
+            const datesArray = selectedDates.split(','); // 날짜를 배열로 변환
+            const calendarContainer = document.getElementById('calendar-container');
+            const ul = calendarContainer.querySelector('.calendar');
+            datesArray.forEach(date => {
+                const li = document.createElement('li');
+                li.textContent = date; // 각 날짜를 리스트 아이템에 추가
+                ul.appendChild(li);
+            });
+        }
+    });
+    // 사용자 정의 장소를 리스트에 추가하는 함수
+    function addCustomPlace() {
+        var placeNameInput = document.getElementById('place-name-input');
+        var placeName = placeNameInput.value.trim();
+
+        if (placeName !== '') {
+            var li = document.createElement('li');
+            li.textContent = placeName; // 입력된 장소 이름으로 리스트 아이템 생성
+            document.getElementById('places-container').appendChild(li); // 장소 리스트에 추가
+
+            placeNameInput.value = ''; // 입력 필드 초기화
+        } else {
+            alert('장소 이름을 입력하세요.'); // 장소 이름이 입력되지 않았을 때 알림
+        }
+    }
+
+    function addCustomPlace() {
+        var placeNameInput = document.getElementById('place-name-input');
+        var placeName = placeNameInput.value.trim();
+
+        if (placeName !== '') {
+            var li = document.createElement('li');
+            li.textContent = placeName; // 입력된 장소 이름으로 리스트 아이템 생성
+            document.getElementById('places-container').appendChild(li); // 장소 리스트에 추가
+
+            placeNameInput.value = ''; // 입력 필드 초기화
+        } else {
+            alert('장소 이름을 입력하세요.'); // 장소 이름이 입력되지 않았을 때 알림
+        }
+    }
+
+</script>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+    }
+
+    .title {
+
+        background-color: #f8f8f8; /* 배경색 */
+        padding: 10px; /* 안쪽 여백 */
+        border: 1px solid #ddd; /* 테두리 */
+        border-radius: 5px; /* 모서리 둥글게 */
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* 그림자 효과 */
+        margin-bottom: 20px; /* 아래쪽 여백 */
+        text-align: center; /* 가운데 정렬 */
+    }
+
+    .title h3 {
+        margin: 0; /* 기본 마진 제거 */
+        font-size: 1.2em; /* 글자 크기 */
+        color: #333; /* 글자 색상 */
+    }
+
+    .map-container {
+        display: flex;
+    }
+    .left-panel {
+        width: 300px;
+        padding: 10px;
+    }
+    .left-panel1 {
+        text-align: center;
+        margin-top: 100px; /* left-panel과의 간격을 설정 */
+    }
+    .right-panel {
+        flex: 1;
+        position: relative;
+    }
+    .right-panel #map {
+        width: 100%;
+        height: 600px;
+    }
+    .search-container {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        z-index: 2;
+        background: white;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+    .calendar-container {
+        display: none;
+        position: absolute;
+        top: calc(100% + 10px); /* 여행 기간 링크 아래에 위치 */
+        left: 0;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    /* 여행 기간 링크에 마우스를 올렸을 때 */
+    nav#nav2 ul li:nth-child(2) a:hover + .calendar-container {
+        display: block;
+        padding: 0;
+        margin: 0;
+    }
+
+    .calendar-container.visible {
+        display: block; /* 클릭 시 보이기 */
+    }
+    .calendar {
+        list-style: none;
+        padding: 0;
+        margin-top: 10px;
+    }
+
+    .calendar li {
+        cursor: pointer;
+        margin: 5px 0;
+    }
+
+    .calendar li:hover {
+        text-decoration: underline;
+    }
+
+    .place-list {
+        list-style: none;
+        padding: 0;
+        margin-top: 10px;
+    }
+
+    .place-list li {
+        margin: 5px 0;
+    }
+
+    /* 박스 형태로 스타일링 */
+    nav#nav2 ul li {
+        margin-bottom: 10px;
+    }
+
+    nav#nav2 ul li a {
+        display: block;
+        padding: 10px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s ease;
+        text-decoration: none;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    nav#nav2 ul li a:hover {
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* 날짜 선택 시 호버 효과 */
+    .calendar li:hover {
+        background-color: #f0f0f0;
+    }
+
+    button.button_1 {
+
+        display: block;
+        width: 100%; /* 링크 요소와 넓이 동일하게 설정 */
+        padding: 10px;
+        background-color: #ccd6d8;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s ease;
+        text-decoration: none;
+        color: #333;
+        cursor: pointer; /* 버튼 커서 설정 */
+        margin-top: 10px;
+    }
+    button.button_1:hover {
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* 더 큰 그림자 설정 */
+        transform: translateY(-2px); /* 약간의 위로 이동 효과 */
+    }
+
+    nav#nav2 ul li {
+        margin-top:13px;
+    }
+
+    input-box{
+        margin-bottom: 10px;
+    }
+
+    .input-field {
+        width: 100%; /* 부모 요소(.input-box)에 꽉 차도록 설정 */
+        padding: 10px; /* 내부 여백 설정 */
+        font-size: 14px; /* 폰트 사이즈 설정 */
+        border: 1px solid #ccc; /* 테두리 설정 */
+        border-radius: 5px; /* 모서리 둥글게 설정 */
+        box-sizing: border-box; /* 패딩과 테두리 포함한 전체 박스 크기로 설정 */
+    }
+
+
+</style>
+
+</body>
+</html>
