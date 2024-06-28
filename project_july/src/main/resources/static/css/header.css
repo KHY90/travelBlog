@@ -41,6 +41,13 @@ header {
 
 >>>>>>> ba6e39098d27fbb7cf38ef40ffcf775f0785289d
 /* 메뉴 스타일링 */
+.home {
+        display: flex; /* 가로로 나열 */
+        align-items: center; /* 세로 가운데 정렬 */
+        margin-right: auto; /* 왼쪽 여백을 자동으로 설정하여 오른쪽으로 이동 */
+        margin-right: 40px;
+}
+
 .menu {
     display: flex; /* 가로로 나열 */
     align-items: center; /* 세로 가운데 정렬 */
